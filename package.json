@@ -15,8 +15,7 @@
   "dependencies": {
     "purecloud-platform-client-v2": "*",
     "ts-node": "*",
-    "@types/node": "^22",
-    "@types/aws-lambda": "*"
+    "@types/node": "^22"
   },
   "devDependencies": {
     "@cucumber/cucumber": "*",
