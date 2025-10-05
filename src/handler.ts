@@ -1,29 +1,17 @@
-import { BusinessService } from './business/business-service';
+import { FactorialService } from './business/factorial-service';
 
 export interface Event {
-  body: string;
+  input: number;
 }
 
-export interface Context {
-  clientContext: ClientContext
-};
-
-export interface ClientContext {
-  gc_client_id: string
-  gc_client_secret: string
-  gc_aws_region: string
-};
-
 export const handler = async (
-  event: Event,
-  context: Context
+  event: Event
 ) => {
   try {
     console.log('Event:', JSON.stringify(event, null, 2));
-    console.log('Context:', JSON.stringify(context, null, 2));
 
-    const exampleService = new BusinessService();
-    const result = await exampleService.process(event.body);
+    const exampleService = new FactorialService();
+    const result = await exampleService.process(event.input);
     
     return {
       statusCode: 200,
@@ -55,18 +43,10 @@ export const handler = async (
 // CLI runner
 if (require.main === module) {
   const fakeEvent: Event = {
-    body: process.argv[2] || '{"test": "data"}'
+    input: +process.argv[2] || 5,
   };
 
-  const fakeContext: Context = {
-    clientContext: {
-      gc_client_id: '',
-      gc_client_secret: '',
-      gc_aws_region: '',
-    }
-  };
-
-  handler(fakeEvent, fakeContext)
+  handler(fakeEvent)
     .then(result => {
       console.log('Result:', JSON.stringify(result, null, 2));
     })
