@@ -10,7 +10,8 @@
     "build": "tsc",
     "test": "cucumber-js",
     "lint": "eslint src/**/*.ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "zipnodev": "npm install --omit=dev && zip -r factorial.zip dist/ node_modules/"
   },
   "dependencies": {
     "purecloud-platform-client-v2": "*",
