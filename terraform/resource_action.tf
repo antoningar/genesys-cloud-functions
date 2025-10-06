@@ -32,7 +32,7 @@ resource "genesyscloud_integration_action" "function_action" {
     description       = "Funtion for factorial calculation"
     handler           = "handler.handler"
     runtime           = "nodejs22.x"
-    timeout_seconds   = 30
+    timeout_seconds   = 15
     file_path         = "../function/factorial.zip"
   }
 }
