@@ -33,8 +33,6 @@ resource "genesyscloud_integration_action" "function_action" {
     handler           = "handler.handler"
     runtime           = "nodejs22.x"
     timeout_seconds   = 30
-    file_path         = "../functions/factorial.zip"
-    file_content_hash = filesha256("../functions/factorial.zip")
-    publish           = true
+    file_path         = "../function/factorial.zip"
   }
 }
