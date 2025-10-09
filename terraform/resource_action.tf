@@ -10,7 +10,7 @@ resource "genesyscloud_integration_action" "function_action" {
       "number"
     ],
     "properties" = {
-      "inputData" = {
+      "number" = {
         "type" = "integer"
       }
     }
