@@ -29,10 +29,10 @@ resource "genesyscloud_integration_action" "function_action" {
   })
 
   function_config {
-    description     = "Funtion for factorial calculation"
-    handler         = "dist/src/handler.handler"
-    runtime         = "nodejs22.x"
-    timeout_seconds = 15
-    file_path       = "../function/factorial.zip"
+    description       = "Funtion for factorial calculation"
+    handler           = "dist/src/handler.handler"
+    runtime           = "nodejs22.x"
+    timeout_seconds   = 15
+    file_path         = "../function/factorial.zip"
   }
 }
