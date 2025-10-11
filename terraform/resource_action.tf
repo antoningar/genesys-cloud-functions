@@ -35,7 +35,7 @@ resource "genesyscloud_integration_action" "function_action" {
 
   config_response {
     translation_map = {
-      result = "$.body.result"
+      result = "$.body"
     }
     translation_map_defaults = {
       result = "-1"
