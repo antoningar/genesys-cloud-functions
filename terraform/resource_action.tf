@@ -7,10 +7,10 @@ resource "genesyscloud_integration_action" "function_action" {
   contract_input = jsonencode({
     "type" = "object",
     "required" = [
-      "number"
+      "input"
     ],
     "properties" = {
-      "number" = {
+      "input" = {
         "type" = "integer"
       }
     }
@@ -28,11 +28,21 @@ resource "genesyscloud_integration_action" "function_action" {
     }
   })
 
+  config_response {
+    translation_map = {
+      result = "$.body.result"
+    }
+    translation_map_defaults = {
+      result = "-1"
+    }
+    success_template = "{ \"result\": $${result}}"
+  }
+
   function_config {
-    description       = "Funtion for factorial calculation"
-    handler           = "dist/src/handler.handler"
-    runtime           = "nodejs22.x"
-    timeout_seconds   = 15
-    file_path         = "../function/factorial.zip"
+    description     = "Funtion for factorial calculation"
+    handler         = "dist/src/handler.handler"
+    runtime         = "nodejs22.x"
+    timeout_seconds = 15
+    file_path       = "../function/factorial.zip"
   }
 }
