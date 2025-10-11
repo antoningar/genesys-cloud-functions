@@ -13,4 +13,3 @@ To be executed, this terraform project need an oath with the following persmissi
 State is managed by Terraform Cloud.  
 Plan is done when a PR is created.  
 Apply is done when a merge is done on main branch.
-
