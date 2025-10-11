@@ -28,6 +28,11 @@ resource "genesyscloud_integration_action" "function_action" {
     }
   })
 
+  config_request {
+    request_type     = "POST"
+    request_template = "$${input.rawRequest}"
+  }
+
   config_response {
     translation_map = {
       result = "$.body.result"

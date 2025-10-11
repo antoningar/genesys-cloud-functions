@@ -2,7 +2,7 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { strict as assert } from 'assert';
 import { FactorialService } from '../../src/business/factorial-service';
 
-let result: string;
+let result: number;
 let service: FactorialService;
 
 Given('a business service that calculates the factorial of a number', function () {
@@ -14,5 +14,5 @@ When('the number is {int}', async function (num: number) {
 });
 
 Then('it should return {int}', function (expected: number) {
-  assert.equal(result, expected.toString());
+  assert.equal(result, expected);
 });
