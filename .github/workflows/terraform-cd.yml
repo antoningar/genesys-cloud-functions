@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:  
-  plan:
+  apply:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions: write-all
@@ -39,7 +39,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: ./function/package-lock.json
     
-    - name: Install dependencies
+    - name: Build and Zip function
       working-directory: ./function
       run: npm run zipnodev
 
