@@ -1,0 +1,54 @@
+name: TERRAFORM CI
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [ main ]
+
+jobs:  
+  plan:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions: write-all
+    
+    strategy:
+      matrix:
+        node-version: [22.x]
+    
+    env:
+      GENESYSCLOUD_OAUTHCLIENT_ID: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_ID }}
+      GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET }}
+      GENESYSCLOUD_REGION: ${{ secrets.GENESYSCLOUD_REGION }}
+      TF_TOKEN_APP_TERRAFORM_IO: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
+      TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+      TF_WORKSPACE: ${{ secrets.TF_WORKSPACE }}
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - uses: hashicorp/setup-terraform@v3.1.2
+      with:    
+        cli_config_credentials_token: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ./function/package-lock.json
+    
+    - name: Install dependencies
+      working-directory: ./function
+      run: npm run zipnodev
+
+    - name: Terraform Init
+      id: init
+      working-directory: ./terraform
+      run: terraform init
+      
+    - name: Terraform Apply
+      id: apply
+      working-directory: ./terraform
+      run: terraform apply -auto-approve
