@@ -1,5 +1,5 @@
  resource "genesyscloud_integration_action" "function_action" {
-  name                   = "AGAR Factorial Calculation Function"
+  name                   = "AGAR Factorial Calculation"
   category               = "Function Data Actions"
   integration_id         = data.genesyscloud_integration.integration.id
   config_timeout_seconds = 20
