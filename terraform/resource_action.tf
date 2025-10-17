@@ -1,5 +1,5 @@
  resource "genesyscloud_integration_action" "function_action" {
-  name                   = "AGAR Factorial"
+  name                   = "AGAR Factorial Function"
   category               = "Function Data Actions"
   integration_id         = data.genesyscloud_integration.integration.id
   config_timeout_seconds = 20
@@ -30,7 +30,8 @@
 
   config_request {
     request_type     = "POST"
-    request_template = "$${input.rawRequest}"
+    request_template = "$${input.rawRequest}" 
+    headers = {}
   }
 
   config_response {
