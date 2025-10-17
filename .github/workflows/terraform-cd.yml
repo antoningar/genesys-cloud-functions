@@ -39,7 +39,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: ./function/package-lock.json
     
-    - name: Install dependencies
+    - name: Build and Zip function
       working-directory: ./function
       run: npm run zipnodev
 
