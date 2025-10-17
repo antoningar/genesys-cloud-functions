@@ -14,9 +14,9 @@ Terraform credentials need to be set as env variable with GENESYSCLOUD_REGION, G
 # Terraform state management
 State is managed in HCP Terraform through Terraform CLI.  
 To run it locally, the following environment variables need to be set up :  
-GENESYSCLOUD_OAUTHCLIENT_ID
-GENESYSCLOUD_OAUTHCLIENT_SECRET
-GENESYSCLOUD_REGION
-TF_TOKEN_APP_TERRAFORM_IO
-TF_CLOUD_ORGANIZATION
-TF_WORKSPACE
+GENESYSCLOUD_OAUTHCLIENT_ID  
+GENESYSCLOUD_OAUTHCLIENT_SECRET  
+GENESYSCLOUD_REGION  
+TF_TOKEN_APP_TERRAFORM_IO  
+TF_CLOUD_ORGANIZATION  
+TF_WORKSPACE  
