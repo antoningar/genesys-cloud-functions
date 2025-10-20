@@ -1,0 +1,12 @@
+Les Genesys Cloud Functions ont débarqué en début d'année 2025.
+Ce type de Data Actions permet d'embarquer et d'exécuter du code directement au sein de son organisation Genesys.
+
+Grâce aux serverless functions, toute la partie hébergement du code est déléguée.
+Mais pour aller plus loin et me focaliser sur mon code, j'ai automatisé le déploiement de mes functions.
+
+Via mes pipelines, mon code est testé, validé, packagé en function, puis déployé automatiquement au rythme de mon workflow.
+
+Ci-joint un schéma de ces pipelines (elles sont en public sur mon profil Github).
+Je serais aussi curieux de découvrir vos manières de déployer vos functions.
+
+#GenesysCloud #CxAsCode #Devops
