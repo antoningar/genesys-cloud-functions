@@ -1,5 +1,5 @@
 resource "genesyscloud_integration_action" "function_action" {
-  name                   = "AGAR Factorial"
+  name                   = "Function"
   category               = "Function Data Actions"
   integration_id         = data.genesyscloud_integration.integration.id
   config_timeout_seconds = 20
@@ -45,10 +45,10 @@ resource "genesyscloud_integration_action" "function_action" {
   }
 
   function_config {
-    description     = "Funtion for factorial calculation"
+    description     = "Funtion"
     handler         = "dist/src/handler.handler"
-    runtime         = "nodejs22.x"
+    runtime         = "nodejs24.x"
     timeout_seconds = 15
-    file_path       = "factorial.zip"
+    file_path       = "function.zip"
   }
 }
